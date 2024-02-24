@@ -10,7 +10,7 @@ win = pygame.display.set_mode((WIDTH, HEIGHT))
 cap = cv2.VideoCapture(0)
 
 mpHands = mediapipe.solutions.hands
-hands = mpHands.Hands(max_num_hands=10)
+hands = mpHands.Hands(max_num_hands=2)
 mpDraw = mediapipe.solutions.drawing_utils
 
 
