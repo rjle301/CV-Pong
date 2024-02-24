@@ -9,8 +9,6 @@ WINDOW_HEIGHT = 600
 PADDLE_WIDTH = WINDOW_WIDTH * .02
 PADDLE_HEIGHT = WINDOW_HEIGHT * .15
 
-#capture = cv2.VideoCapture(0)
-
 pygame.init()
 
 # Define the dimensions of 
