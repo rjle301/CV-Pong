@@ -3,4 +3,4 @@
 ## Contributors:
 - Ryan Lembo-Ehms
 - Mark Luskiewicz
-- Ethan battaglia
+- Ethan Battaglia
