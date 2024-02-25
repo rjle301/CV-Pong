@@ -24,4 +24,4 @@ We have plans of expanding our CV experience into more games. By utilizing this 
 ## Requirements to run
  - OpenCV library
  - MediaPipe library
- - Python ver 3.7 - 3.10
+ - Python version 3.7 - 3.10
