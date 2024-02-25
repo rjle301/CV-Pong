@@ -21,7 +21,13 @@ A lot. We came in here expecting to learn, too! But we went through a lot of str
 ### What's next for CV Pong
 We have plans of expanding our CV experience into more games. By utilizing this technology, we could even find a specific gesture that the player does with their hand to perform a specific function in ANY game, based on the gesture.
 
-## Requirements to run
+## Required libraries
  - OpenCV library
  - MediaPipe library
- - Python version 3.7 - 3.10
+ - PyGame
+ - NumPy
+
+## Mediapipe only works on Python versions 3.7 - 3.11
+
+## Improvements
+ - Rendering the PyGame window and getting data from the camera run serially. Multi-threading could improve rendering performance  
