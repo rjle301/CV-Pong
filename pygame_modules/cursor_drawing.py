@@ -1,10 +1,22 @@
 import cv2
 import mediapipe
 import pygame 
+import random
 from pong_shapes import *
  
+
+def get_dotted_line_segments(window_width, window_height):
+    segments = []
+    center_of_screen = window_width/2
+    num_lines = window_height // 20
+    for _, v in enumerate(range(0, window_height, num_lines)):
+        segments.append(pygame.Rect(center_of_screen - HORIZONTAL_LINE_OFFSET, v + HORIZONTAL_LINE_OFFSET, LINE_WIDTH, LINE_HEIGHT))
+        
+    return segments
+
+
 # Window constants
-WINDOW_WIDTH = 800
+WINDOW_WIDTH = 1000
 WINDOW_HEIGHT = 600 
 
 # Paddle constants
@@ -16,6 +28,13 @@ PADDLE_BORDER_OFFSET = 30
 START_X = WINDOW_WIDTH / 2
 START_Y = WINDOW_HEIGHT / 2
 RADIUS = 7
+
+# Dashed line constants
+VERTICAL_LINE_OFFSET = 7.5
+HORIZONTAL_LINE_OFFSET = 3
+LINE_WIDTH = 6
+LINE_HEIGHT = 15
+
 
 pygame.init()
 
@@ -40,7 +59,10 @@ ball = Ball(START_X, START_Y, RADIUS)
   
 # Variable to keep our game loop running 
 running = True
-  
+
+segments = get_dotted_line_segments(WINDOW_WIDTH, WINDOW_HEIGHT)
+print(segments)
+
 # game loop 
 while running: 
     
@@ -67,16 +89,24 @@ while running:
         
     ball.move()
     
+    # Check to see if a ball collided with a paddle
     for paddle in paddle_list:
         if (paddle.get_rectangle().colliderect(pygame.Rect(ball.get_x() - ball.get_radius(), ball.get_y() - ball.get_radius(), ball.get_diameter(), ball.get_diameter()))):
             ball.flip_x_velocity()
-        
+    
+    # Check to see if the ball went out of bounds
+    if (ball.get_x() + ball.get_radius() < 0 or ball.get_x() - ball.get_radius() > WINDOW_WIDTH):
+        ball.reset(WINDOW_WIDTH, random.randint(100, 500))
+    
+    # Check if the ball hit the bottom or top of the game window
     if (ball.get_y() - ball.get_radius()) <= 0 or (ball.get_y() + ball.get_radius() >= WINDOW_HEIGHT):
         ball.flip_y_velocity()
         
     screen.fill("black")
+    for rect in segments:
+        pygame.draw.rect(screen, "white", rect)
+
     left_paddle.draw(screen, "white")
     right_paddle.draw(screen, "white")
     ball.draw(screen, "white")
     pygame.display.flip()
-

@@ -1,16 +1,23 @@
 import pygame
+import random
+import math
+
+
 
 class Ball:
     BALL_SPEED = 0.4
-
+    
     def __init__(self, x_pos, y_pos, radius):
         self.x_pos = x_pos
         self.y_pos = y_pos
         self.radius = radius
-        self.diameter = radius * 2
         
         self.velocity_y = .2
         self.velocity_x = .2
+
+
+    def __del__(self) -> None:
+        print("Ball was deleted.")
 
     def get_x(self):
         return self.x_pos
@@ -22,7 +29,7 @@ class Ball:
         return self.radius
     
     def get_diameter(self):
-        return self.diameter
+        return self.radius * 2
     
     def draw(self, screen, color):
         pygame.draw.circle(screen, color, (self.x_pos, self.y_pos), self.radius, 0)
@@ -36,6 +43,13 @@ class Ball:
     
     def flip_y_velocity(self):
         self.velocity_y *= -1
+
+    def reset(self, window_width, y_pos):
+        angle = random.randint(-75, 75)
+        self.velocity_y = Ball.BALL_SPEED * math.sin(angle)
+        self.velocity_x = Ball.BALL_SPEED * math.cos(angle)
+        self.x_pos = window_width / 2
+        self.y_pos = y_pos
 
 
 class Paddle:
