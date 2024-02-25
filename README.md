@@ -23,11 +23,9 @@ We have plans of expanding our CV experience into more games. By utilizing this 
 
 ## Required libraries
  - OpenCV library
- - MediaPipe library
+ - MediaPipe library (only works on Python version 3.7 - 3.11)
  - PyGame
  - NumPy
-
-## Mediapipe only works on Python versions 3.7 - 3.11
 
 ## Improvements
  - Rendering the PyGame window and getting data from the camera run serially. Multi-threading could improve rendering performance  
