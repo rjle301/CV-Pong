@@ -1,4 +1,4 @@
-# Brickhack-X-Project
+# Brickhack X Hackathon Project
 
 ## Contributors:
 - Ryan Lembo-Ehms
