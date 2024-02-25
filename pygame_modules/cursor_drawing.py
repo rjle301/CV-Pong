@@ -10,6 +10,7 @@ WINDOW_HEIGHT = 600
 # Paddle constants
 PADDLE_WIDTH = WINDOW_WIDTH * .02
 PADDLE_HEIGHT = WINDOW_HEIGHT * .15
+PADDLE_BORDER_OFFSET = 30
 
 # Ball constants
 START_X = WINDOW_WIDTH / 2
@@ -32,8 +33,8 @@ screen.fill("black")
 pygame.display.flip() 
 
 #Initialize two paddles - left and right
-left_paddle = Paddle(30, 30, PADDLE_WIDTH, WINDOW_HEIGHT * .15)
-right_paddle = Paddle(770 - WINDOW_WIDTH * .02, 30, PADDLE_WIDTH, PADDLE_HEIGHT)
+left_paddle = Paddle(PADDLE_BORDER_OFFSET, PADDLE_BORDER_OFFSET, PADDLE_WIDTH, PADDLE_HEIGHT)
+right_paddle = Paddle(WINDOW_WIDTH - (PADDLE_WIDTH + PADDLE_BORDER_OFFSET), PADDLE_BORDER_OFFSET, PADDLE_WIDTH, PADDLE_HEIGHT)
 paddle_list = [left_paddle, right_paddle]
 ball = Ball(START_X, START_Y, RADIUS)
   
