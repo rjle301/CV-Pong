@@ -5,15 +5,16 @@ import math
 
 
 class Ball:
-    BALL_SPEED = 0.4
+    BALL_SPEED = 20.0
     
     def __init__(self, x_pos, y_pos, radius):
         self.x_pos = x_pos
         self.y_pos = y_pos
         self.radius = radius
-        
-        self.velocity_y = .2
-        self.velocity_x = .2
+
+        angle = math.radians(random.randint(-75, 75))
+        self.velocity_y = Ball.BALL_SPEED * math.sin(angle)
+        self.velocity_x = Ball.BALL_SPEED * math.cos(angle)
 
 
     def __del__(self) -> None:
@@ -45,7 +46,7 @@ class Ball:
         self.velocity_y *= -1
 
     def reset(self, window_width, y_pos):
-        angle = random.randint(-75, 75)
+        angle = math.radians(random.randint(-75, 75))
         self.velocity_y = Ball.BALL_SPEED * math.sin(angle)
         self.velocity_x = Ball.BALL_SPEED * math.cos(angle)
         self.x_pos = window_width / 2
